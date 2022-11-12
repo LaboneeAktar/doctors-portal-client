@@ -28,8 +28,8 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 lg:flex lg:justify-between">
-        <div className="navbar-start">
+      <div className="navbar bg-gradient-to-r from-primary to-secondary mt-5 lg:flex lg:justify-between">
+        <div className="navbar-start py-1">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -54,8 +54,8 @@ const Header = () => {
               {menuItem}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Doctors Portal
+          <Link to="/" className="btn btn-ghost normal-case text-3xl">
+            <h1>Doctors Portal</h1>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

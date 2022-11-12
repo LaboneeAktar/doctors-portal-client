@@ -7,7 +7,7 @@ const Banner = () => {
     <div>
       <div className="hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="hero-content flex-col lg:flex-row-reverse p-10">
-          <img src={chair} className="rounded-lg w-1/2 shadow-2xl" alt="" />
+          <img src={chair} className="rounded-lg lg:w-1/2 shadow-2xl" alt="" />
           <div>
             <h1 className="text-3xl font-bold">Your New Smile Starts Here!</h1>
             <p className="py-6 pr-6">

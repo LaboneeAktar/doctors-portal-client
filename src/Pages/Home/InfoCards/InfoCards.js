@@ -34,7 +34,7 @@ const InfoCards = () => {
         {cardInfo.map((singlecard) => (
           <div
             key={singlecard.id}
-            className={`card card-side shadow-xl px-6 py-3 text-white font-normal ${singlecard.bgClass}`}
+            className={`card md:card-side shadow-xl px-6 py-3 text-white font-normal ${singlecard.bgClass}`}
           >
             <figure>
               <img src={singlecard.img} alt="..." />
