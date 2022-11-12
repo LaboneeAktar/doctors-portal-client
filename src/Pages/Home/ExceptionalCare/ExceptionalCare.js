@@ -1,20 +1,21 @@
 import React from "react";
+import treatment from "../../../assets/images/treatment.png";
 
 const ExceptionalCare = () => {
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
+    <div className="mt-16">
+      <div className="hero">
+        <div className="hero-content flex-col lg:flex-row px-28 py-5">
           <img
-            src="https://placeimg.com/260/400/arch"
-            className="max-w-sm rounded-lg shadow-2xl"
+            src={treatment}
+            className="lg:w-1/2 rounded-lg shadow-2xl lg:h-96"
             alt=""
           />
-          <div>
+          <div className="px-16 py-16">
             <h1 className="text-3xl font-bold">
               Exceptional Dental Care, on Your Terms
             </h1>
-            <p className="py-6">
+            <p className="py-6 text-justify">
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsumis that it has a more-or-less normal
@@ -22,7 +23,9 @@ const ExceptionalCare = () => {
               here', making it look like readable English. Many desktop
               publishing packages and web page.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white font-normal hover:bg-gradient-to-r hover:from-rose-400 hover:to-rose-700 ">
+              Get Started
+            </button>
           </div>
         </div>
       </div>
