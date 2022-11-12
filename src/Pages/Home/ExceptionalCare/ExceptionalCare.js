@@ -6,13 +6,13 @@ const ExceptionalCare = () => {
   return (
     <div className="mt-16">
       <div className="hero">
-        <div className="hero-content flex-col lg:flex-row px-28 py-5">
+        <div className="hero-content flex-col lg:flex-row lg:px-28 py-5">
           <img
             src={treatment}
             className="lg:w-1/2 rounded-lg shadow-2xl lg:h-96"
             alt=""
           />
-          <div className="px-16 py-16">
+          <div className="lg:px-16 lg:py-16 pt-5">
             <h1 className="text-3xl font-bold">
               Exceptional Dental Care, on Your Terms
             </h1>

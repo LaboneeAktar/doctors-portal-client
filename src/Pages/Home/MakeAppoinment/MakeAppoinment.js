@@ -7,7 +7,7 @@ const MakeAppoinment = () => {
   return (
     <div>
       <section
-        className="mt-32"
+        className="lg:mt-32 mt-8"
         style={{
           background: `url(${appointment})`,
         }}
