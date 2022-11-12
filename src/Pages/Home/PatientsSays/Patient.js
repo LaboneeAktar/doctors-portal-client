@@ -15,12 +15,7 @@ const Patient = ({ patient }) => {
             </div>
             <div>
               <h3 className="text-sm font-semibold">{name}</h3>
-              <time
-                datetime="2021-02-18"
-                className="text-sm dark:text-gray-400"
-              >
-                {address}
-              </time>
+              <time className="text-sm dark:text-gray-400">{address}</time>
             </div>
           </div>
         </article>
