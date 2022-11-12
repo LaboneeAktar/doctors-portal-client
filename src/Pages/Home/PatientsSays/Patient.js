@@ -8,11 +8,11 @@ const Patient = ({ patient }) => {
         <article>
           <p className="mt-4 dark:text-gray-400">{message}</p>
           <div className="flex items-center mt-8 space-x-4">
-            <img
-              src={img}
-              alt=""
-              className="w-10 h-10 rounded-full dark:bg-gray-500"
-            />
+            <div className="avatar">
+              <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={img} alt="" />
+              </div>
+            </div>
             <div>
               <h3 className="text-sm font-semibold">{name}</h3>
               <time
