@@ -1,5 +1,6 @@
 import React from "react";
 import treatment from "../../../assets/images/treatment.png";
+import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
 
 const ExceptionalCare = () => {
   return (
@@ -23,9 +24,7 @@ const ExceptionalCare = () => {
               here', making it look like readable English. Many desktop
               publishing packages and web page.
             </p>
-            <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white font-normal hover:bg-gradient-to-r hover:from-rose-400 hover:to-rose-700 ">
-              Get Started
-            </button>
+            <PrimaryButton>Get Started</PrimaryButton>
           </div>
         </div>
       </div>
