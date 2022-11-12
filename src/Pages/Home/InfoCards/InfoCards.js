@@ -1,16 +1,50 @@
 import React from "react";
+import clockImg from "../../../assets/icons/clock.svg";
+import locationImg from "../../../assets/icons/marker.svg";
+import phoneImg from "../../../assets/icons/phone.svg";
 
 const InfoCards = () => {
+  const cardInfo = [
+    {
+      id: "01",
+      title: "Opening Hours",
+      info: "9.00AM - 5.00PM Everyday",
+      img: clockImg,
+      bgClass: "bg-gradient-to-r from-primary to-secondary",
+    },
+    {
+      id: "02",
+      title: "Visit Our Location",
+      info: "Brooklyn, NY 10036, United States",
+      img: locationImg,
+      bgClass: "bg-accent",
+    },
+    {
+      id: "03",
+      title: "Contact Us Now",
+      info: "+000 123 456789",
+      img: phoneImg,
+      bgClass: "bg-gradient-to-r from-primary to-secondary",
+    },
+  ];
+
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+    <div className="my-20">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+        {cardInfo.map((singlecard) => (
+          <div
+            key={singlecard.id}
+            className={`card card-side shadow-xl px-6 py-3 text-white font-normal ${singlecard.bgClass}`}
+          >
+            <figure>
+              <img src={singlecard.img} alt="..." />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{singlecard.title}</h2>
+              <p>{singlecard.info}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
