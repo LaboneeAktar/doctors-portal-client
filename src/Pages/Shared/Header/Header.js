@@ -54,7 +54,10 @@ const Header = () => {
               {menuItem}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-3xl">
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-3xl text-gray-100 font-normal"
+          >
             <h1>Doctors Portal</h1>
           </Link>
         </div>
