@@ -3,7 +3,7 @@ import Banner from "../Banner/Banner.js";
 import ContactUs from "../ContactUs/ContactUs.js";
 import ExceptionalCare from "../ExceptionalCare/ExceptionalCare.js";
 import InfoCards from "../InfoCards/InfoCards.js";
-import MakeAppoinment from "../MakeAppoinment/MakeAppoinment.js";
+import MakeAppoinment from "../MakeAppointment/MakeAppointment.js";
 import PatientsSays from "../PatientsSays/PatientsSays.js";
 import Services from "../Services/Services.js";
 
