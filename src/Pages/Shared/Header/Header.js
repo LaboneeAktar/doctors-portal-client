@@ -24,16 +24,19 @@ const Header = () => {
       <li>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/reviews">Reviews</Link>
-      </li>
+
       <li>
         <Link to="/contatct">Contact Us</Link>
       </li>
       {user?.uid ? (
-        <li>
-          <button onClick={handleLogOut}>LogOut</button>
-        </li>
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button onClick={handleLogOut}>LogOut</button>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>
