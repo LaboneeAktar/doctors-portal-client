@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => toast.error("Logout Success"))
+      .catch((error) => console.error(error));
+  };
+
   const menuItem = (
     <>
       <li>
@@ -20,9 +30,15 @@ const Header = () => {
       <li>
         <Link to="/contatct">Contact Us</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+      {user?.uid ? (
+        <li>
+          <button onClick={handleLogOut}>LogOut</button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
 

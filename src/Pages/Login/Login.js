@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const {
@@ -9,8 +11,21 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
+  const { signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
+
   const handleLogin = (data) => {
-    console.log(data);
+    setLoginError("");
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successful");
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -24,6 +39,7 @@ const Login = () => {
             </label>
             <input
               type="text"
+              placeholder="Enter Email"
               {...register("email", { required: "Email Address is required" })}
               className="input input-bordered w-full max-w-xs"
             />
@@ -37,6 +53,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              placeholder="Enter Password"
               {...register("password", {
                 required: "Password is required",
                 minLength: {
@@ -54,6 +71,9 @@ const Login = () => {
               <p className="text-rose-700">{errors.password?.message}</p>
             )}
           </div>
+          <div>
+            {loginError && <p className="text-rose-700">{loginError}</p>}
+          </div>
           <input
             className="btn btn-accent w-full my-5"
             value="Login"
@@ -63,7 +83,7 @@ const Login = () => {
         <p>
           New to Doctors Portal?{" "}
           <Link className="text-secondary" to="/signup">
-            Create new Account
+            Create New Account
           </Link>
         </p>
         <div className="divider">OR</div>

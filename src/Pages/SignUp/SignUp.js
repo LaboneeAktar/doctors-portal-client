@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -9,8 +11,17 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
 
+  const { createUser } = useContext(AuthContext);
+
   const handleSignUp = (data) => {
-    console.log(data);
+    // console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Created Account");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -87,9 +98,9 @@ const SignUp = () => {
             {/* {signUpError && <p className="text-rose-600">{signUpError}</p>} */}
           </form>
           <p>
-            Already have an account{" "}
+            Already have an account?{" "}
             <Link className="text-secondary" to="/login">
-              Please Login
+              Login
             </Link>
           </p>
           <div className="divider">OR</div>
