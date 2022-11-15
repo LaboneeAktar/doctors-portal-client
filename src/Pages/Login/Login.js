@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -7,12 +8,15 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Login = () => {
   const {
     register,
+    getValues,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, resetPassword } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
+
+  const googleProvider = new GoogleAuthProvider();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,10 +38,27 @@ const Login = () => {
       });
   };
 
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleResetPassword = () => {
+    const userEmail = getValues("email");
+    resetPassword(userEmail)
+      .then(() => toast.success("Send Email for Reset. Please Check it."))
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7 bg-base-200 rounded-lg shadow-lg">
         <h1 className="text-2xl text-center">Login</h1>
+
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -60,17 +81,22 @@ const Login = () => {
             <input
               type="password"
               placeholder="Enter Password"
-              {...register("password", {
+              {...register(
+                "password"
+                /*  , {
                 required: "Password is required",
                 minLength: {
                   value: 6,
                   message: "Password must be 6 Character",
                 },
-              })}
+              } */
+              )}
               className="input input-bordered w-full max-w-xs"
             />
             <label className="label">
-              <span className="label-text">Forget Password?</span>
+              <button onClick={handleSubmit(handleResetPassword)}>
+                <span className="label-text">Forget Password?</span>
+              </button>
             </label>
 
             {errors.password && (
@@ -93,7 +119,9 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">
+          CONTINUE WITH GOOGLE
+        </button>
       </div>
     </div>
   );

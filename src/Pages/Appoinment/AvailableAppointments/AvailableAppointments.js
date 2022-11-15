@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import AppointmentOption from "./AppointmentOption";
-import BookingModal from "../Appointment/BookingModal/BookingModal";
+import BookingModal from "../BookingModal/BookingModal";
 
 const AvailableAppoinments = ({ selectedDate }) => {
   const [appointmentOptions, setAppointmentOptions] = useState([]);
