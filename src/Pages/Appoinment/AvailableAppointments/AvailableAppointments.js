@@ -7,12 +7,14 @@ const AvailableAppoinments = ({ selectedDate }) => {
   const [appointmentOptions, setAppointmentOptions] = useState([]);
   const [treatment, setTreatment] = useState(null);
 
+  const date = format(selectedDate, "PP");
+
   useEffect(() => {
-    fetch("appointmentOptions.json")
+    fetch(`http://localhost:5000/appointmentOptions?date=${date}`)
       .then((res) => res.json())
       .then((data) => setAppointmentOptions(data))
       .catch((error) => console.error(error));
-  }, []);
+  }, [date]);
 
   return (
     <section>
@@ -20,9 +22,9 @@ const AvailableAppoinments = ({ selectedDate }) => {
         Available Appointments on {format(selectedDate, "PP")}.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {appointmentOptions.map((option) => (
+        {appointmentOptions.map((option, idx) => (
           <AppointmentOption
-            key={option.key}
+            key={idx}
             appointmentOption={option}
             setTreatment={setTreatment}
           ></AppointmentOption>
